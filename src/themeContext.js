@@ -3,7 +3,7 @@ const ThemeContext = React.createContext()
 
 function ThemeProvider(props){
     const [theme, setTheme] = useState("dark")
-    console.log(theme, setTheme)
+    const [open,setOpen]=useState(false)
     if(theme==="dark"){
         document.body.classList.add("dark")
         document.body.classList.remove("light")
@@ -12,7 +12,7 @@ function ThemeProvider(props){
         document.body.classList.remove("dark")
     }  
     return(
-        <ThemeContext.Provider value={{theme,setTheme}}>
+        <ThemeContext.Provider value={{theme,setTheme, open, setOpen}}>
             {props.children}
         </ThemeContext.Provider>
     )

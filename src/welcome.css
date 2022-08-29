@@ -15,20 +15,15 @@
   font-family: 'Amatic SC', cursive;
   background: transparent;
 }
-.welcomeEnter{
+.welcomeTOC{
   position: relative;
-  top: 7rem;
-  margin-left: 10rem;
+  bottom: -.15em;
 }
 
 .enterCircle>p{
   position: relative;
   top: 20%;
-}
-.buddy{
-position: absolute;
-left: 50%;
-top: 20%;
+  cursor: pointer;
 }
 #buddysHead{
   margin-left: 0.25em;
@@ -94,10 +89,11 @@ top: 20%;
 }
 .toc{ 
   position: absolute;
-  top: -6em;
-  margin: 0rem 22rem;
+  top: -1.5em;
+  margin: 0rem 36rem;
   width: 25rem;
-  opacity: 0;
+  font-size: 0;
+  pointer-events: none;
 }
 .toclight{
   color:antiquewhite
@@ -106,12 +102,13 @@ top: 20%;
   color:black
 }
 .switch {
-  position: relative;
+  position: absolute;
   display: inline-block;
   width: 60px;
   height: 34px;
-  top: 10em;
-  right: 29em;
+  top: 3em;
+  left: 2em;
+  z-index: 9999;
 }
 
 /* Hide default HTML checkbox */
@@ -168,20 +165,19 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
-
-#enterCircle{
-  position: relative;
-  right: 15em;
-  bottom: 2em;
-}
 #circleHolder{
   position: relative; 
-  right: 12em; 
-  bottom: 8em;
-  cursor: pointer;
+  right: 0; 
+  bottom: 17.5rem;
+
 }
 .enterText{
   font-size:40px;
+  font-weight: 900;
+  pointer-events: none;
+}
+.exitText{
+  font-size:0px;
   font-weight: 900;
   pointer-events: none;
 }

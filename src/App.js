@@ -1,15 +1,18 @@
 import { useContext, useState, useEffect } from 'react';
 import './welcome.css';
-import Buddy from "./buddy"
+import './animation.css';
+
 import Home from "./main_pages/home"
 import { ThemeContext } from './themeContext';
 import Resume from "./main_pages/resume"
-import GamesHomePage from "./main_pages/gamesHomePage"
+import BuildAChar from "./main_pages/buildAChar"
 import WritingHomePage from "./main_pages/writingHomepage"
-import MiscPage from "./main_pages/misc"
+import Animations from "./main_pages/animations"
 import {Routes, Route} from "react-router-dom"
-import Animation from './miscPages/animations';
-//import gsap from 'gsap';
+import { BuddyProvider } from './BuddyContext';
+import gsap from 'gsap';
+import { CSSPlugin } from 'gsap/CSSPlugin'
+gsap.registerPlugin(CSSPlugin)
 
 function App() {
   const {theme, setTheme} = useContext(ThemeContext)
@@ -26,14 +29,15 @@ function App() {
         <span className={"slider round "+theme}></span>
         <p>Toggle {theme==="dark"? "DARK":"LIGHT"} mode off!{`(This will turn ${theme==="dark"? "LIGHT":"DARK"} mode on )`}</p>
       </label>
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path = "/resume" element={<Resume/>}></Route>
-          <Route path = "/games" element={<GamesHomePage />}></Route>
-          <Route path = "/writing-Samples" element={<WritingHomePage />}></Route>
-          <Route path = "/misc" element={<MiscPage />}></Route>  
-          <Route path = "/animations" element={<Animation/>}></Route>       
-        </Routes> 
+          <BuddyProvider>
+            <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route path = "/resume" element={<Resume/>}></Route>
+            <Route path = "/buildAChar" element={<BuildAChar />}></Route>
+            <Route path = "/writing-Samples" element={<WritingHomePage />}></Route>
+            <Route path = "/animations" element={<Animations />}></Route>  
+            </Routes> 
+          </BuddyProvider>      
 
     </div>
   );

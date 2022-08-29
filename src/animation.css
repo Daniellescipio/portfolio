@@ -5,7 +5,40 @@
     background-color:coral;
 }
 .buddy{
-    background-image: url(./images/mainCharacter.png);
-    height: 100px;
+    position: absolute;
+    left: 50%;
+    top: 18%;
+    z-index: 9999;
+    cursor: pointer;
+    }
+.surprise{
     width: 100px;
+    height: 25px;
+    display: flex;
+    position: absolute;
+    left: -2.3rem;
+    bottom: 0.5rem;
+}
+.surprise>div{
+    display: none;
+    height: 10px;
+    width: 1px;
+    position: relative;
+    margin: auto;
+}
+.surprise>#a{
+    transform: rotate(-45deg);
+    bottom: 0.5rem;
+    left: 0.75rem;
+}
+.surprise>#b{
+    bottom:1rem;
+}
+.surprise>#c{
+    transform: rotate(45deg);
+    bottom: 0.5rem;
+    right: 0.75rem;
+}
+#directToBuddy{
+    opacity: 0;
 }

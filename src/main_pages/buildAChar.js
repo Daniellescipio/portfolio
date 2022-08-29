@@ -1,4 +1,4 @@
-function GamesHomePage(){
+function BuildAChar(){
     //Draggable.create(".box", {type:"x,y", edgeResistance:0.65, bounds:"#container", inertia:true});
     return(
         <div>
@@ -6,4 +6,4 @@ function GamesHomePage(){
         </div>
     )
 }
-export default GamesHomePage
+export default BuildAChar
