@@ -8,9 +8,13 @@ body{
     top: 0em;
     font-family: 'Amatic SC', cursive;
 }
-#root{
-    position: relative;
-    bottom: 7rem;
+h1{
+    font-size: 150px;
+    margin: 0;
+}
+h2{
+    font-size: 100px;
+    margin-top: 0;
 }
 
 a{

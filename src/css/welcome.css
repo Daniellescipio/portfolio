@@ -11,13 +11,13 @@
 }
 
 .welcomeText{
-  font-size: 150px;
   font-family: 'Amatic SC', cursive;
   background: transparent;
+  margin-top: 0;
 }
 .welcomeTOC{
   position: relative;
-  bottom: -.15em;
+  bottom: -7em;
 }
 
 .enterCircle>p{
@@ -93,6 +93,7 @@
   margin: 0rem 36rem;
   width: 25rem;
   font-size: 0;
+  z-index: 9999;
   pointer-events: none;
 }
 .toclight{
@@ -100,6 +101,13 @@
 }
 .tocdark{
   color:black
+}
+.toc>ul>li{
+  cursor: pointer;
+}
+.toc>ul>li:hover{
+  cursor: pointer;
+  font-size: 5rem;
 }
 .switch {
   position: absolute;
@@ -168,8 +176,7 @@ input:checked + .slider:before {
 #circleHolder{
   position: relative; 
   right: 0; 
-  bottom: 17.5rem;
-
+  bottom: 12rem;
 }
 .enterText{
   font-size:40px;

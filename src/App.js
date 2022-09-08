@@ -1,12 +1,14 @@
 import { useContext, useState, useEffect } from 'react';
-import './welcome.css';
-import './animation.css';
+import './css/welcome.css';
+import './css/animation.css';
 
 import Home from "./main_pages/home"
 import { ThemeContext } from './themeContext';
 import Resume from "./main_pages/resume"
 import BuildAChar from "./main_pages/buildAChar"
 import WritingHomePage from "./main_pages/writingHomepage"
+import GameHomepage from "./games/gameHome"
+import Wordle from "./games/wordle"
 import Animations from "./main_pages/animations"
 import {Routes, Route} from "react-router-dom"
 import { BuddyProvider } from './BuddyContext';
@@ -21,8 +23,12 @@ function App() {
    function handleChange(){
     theme==="dark" ? setTheme("light") : setTheme("dark")
   } 
+  useEffect(()=>{
+    console.log("testFour")
+  },[])
 
   return (
+    <>
     <div className={"App "+theme}>
       <label className={"switch "+ theme}>
         <input type="checkbox" checked={theme==="dark"?true:false} onChange ={handleChange}/>
@@ -33,6 +39,8 @@ function App() {
             <Routes>
             <Route exact path="/" element={<Home />} />
             <Route path = "/resume" element={<Resume/>}></Route>
+            <Route path = "/games" element={<GameHomepage/>}></Route>
+            <Route path = "/games/wordleish" element={<Wordle/>}></Route>
             <Route path = "/buildAChar" element={<BuildAChar />}></Route>
             <Route path = "/writing-Samples" element={<WritingHomePage />}></Route>
             <Route path = "/animations" element={<Animations />}></Route>  
@@ -40,6 +48,7 @@ function App() {
           </BuddyProvider>      
 
     </div>
+    </>
   );
 }
 
