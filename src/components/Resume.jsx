@@ -23,6 +23,7 @@ function Resume() {
           publicKey: 'hYHh13w4RHiYMtnH7',
         })
         console.log("success")
+        setInputs({user_name:"", user_email:"", message:""})
         setSent(true)
       } catch (error) {
         console.log(error)

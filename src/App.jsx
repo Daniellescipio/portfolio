@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { ThemeContext } from "./ThemeConext"
 import Home from "./components/Home"
 import {Routes, Route} from 'react-router-dom'
@@ -14,6 +14,21 @@ import Uno from "./components/games/uno/Uno"
 
 function App() {
   const {theme, setTheme, location} = useContext(ThemeContext)
+  const [noThemeText, setNoThemeText] = useState(false)
+  const [timeOutId, setTimeOutId] = useState()
+  useEffect(()=>{
+     if(noThemeText){
+        const tOId = setTimeout(()=>{
+      setNoThemeText(false)
+    }, 3000)
+    setTimeOutId(tOId)
+
+ }
+
+    return ()=>{
+      clearTimeout(timeOutId)
+    }
+  },[noThemeText])
   return (
     <div className={"App "+theme}>
       {location !=="game" ?
@@ -22,7 +37,18 @@ function App() {
         <span className={"slider round "+theme}></span>
       </label>  
       :
-      <p className={"noSupport"}>Sorry! Games aren't supprted in <b>Dark Mode</b> yet!</p>
+      <>
+        <span 
+          onMouseEnter={()=>setNoThemeText("Sorry! Dark mode is not supported here yet!")}
+          onTouchStart={()=>setNoThemeText("Sorry! Dark mode is not supported here yet!")} 
+          className="material-symbols-outlined noSupport">
+          help
+        </span>
+        {noThemeText && <p class = "noSupportText">{noThemeText}</p>}
+      </>
+    
+      
+      // <p className={"noSupport"}>Sorry! Games aren't supprted in <b>Dark Mode</b> yet!</p>
       }
       <Routes>
         <Route exact path="/"  element={<Home/>}/>

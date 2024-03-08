@@ -4,11 +4,6 @@
     grid-template-columns: repeat(10,125px);
 }
 /* general */
-.noSupport{
-    position: absolute;
-    width: 190px;
-
-}
 .gameFrame{
     border: none;
 }
@@ -295,4 +290,25 @@ button.roundWhim{
 }
 .drawTwo{
     top: 0 !important;
+}
+
+
+/* mobile game stuff */
+@media screen and (max-width: 992px) {
+    .gameMessage{
+        width: inherit;
+    }
+    .gameGrid{
+        display: block;
+        width: 100%;
+    }
+    .gameLink{
+        border-top: 1px solid;
+        padding: 2em;
+        border-bottom: 1px solid;
+    }
+    .gameLink>img{
+        width: 100%;
+        height: inherit;
+    }
 }

@@ -8,6 +8,29 @@ li{
 ul{
   padding:0;
 }
+.noSupport{
+  position: absolute;
+  top: 2em;
+  left: 1em;
+
+}
+.noSupportText{
+  position: absolute;
+  top: 4em;
+  width: 77px;
+  text-align: center;
+  background: grey;
+  opacity: .7;
+  border-radius: 10px;
+  padding: 1em;
+}
+/* mobile general */
+@media screen and (max-width: 992px) {
+  .noSupportText{
+    top: 1em;
+    opacity: .9;
+  }
+}
 /*Theme stuff*/
 .dark{
   background-color: black;
@@ -141,6 +164,7 @@ input:checked + .slider:before {
   border-right: 1px solid;
   margin:10px
 }
+
 /*resumePage*/
 .resumePage{
   display: flex;
@@ -167,6 +191,9 @@ input[type="submit"], .sentMssg>button{
   background: none;
   color: inherit;
   cursor: pointer;
+  box-shadow: 3px 3px 5px black;
+  width: fit-content;
+  margin: auto;
 }
 
 #contactForm>label>input{
@@ -174,6 +201,19 @@ input[type="submit"], .sentMssg>button{
 }
 .sentMssg{
   text-align: center;
+}
+/* mobile resumePage */
+@media screen and (max-width: 992px) {
+  .resumePage{
+    display: block
+  }
+  #resume{
+    width: 100vw;
+  }
+  #resume>iframe, #contactForm {
+    width:90%;
+    border:none;
+  }
 }
 
 /*hover animations*/

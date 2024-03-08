@@ -58,16 +58,18 @@ function Home() {
       console.log(open, hover)
       if(hover ==="exiting"){
         setOpen(false)
+        localStorage.setItem("open", false)
         //call setHover again to trigger animation now that the app is closed
         setHover("exit")
       }else{
         setHover("open")
+        localStorage.setItem("open", true)
       }
 
     })
     const contents = ["Resume","Games"]//,"buildAChar","Animations", "Writing"<--coming soon
     const tableOContents= contents.map((content, index)=><li key ={index} onClick={()=>beforeYouGo(content)}>{content}</li>)
-    tableOContents.push(<li key = "exit" onClick = {handleOpenAndClose} onMouseEnter={()=>setHover("exiting")}>Exit</li>)
+    tableOContents.push(<li key = "exit" onClick = {handleOpenAndClose} onTouchStart={()=>setHover("exiting")} onTouchEnd={handleOpenAndClose} onMouseEnter={()=>setHover("exiting")}>Exit</li>)
     return (
       <>    
       <div ref={container} id = "cover" className={theme}>
