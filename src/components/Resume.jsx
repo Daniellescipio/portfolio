@@ -1,7 +1,7 @@
 import { useState, useRef, useContext, useEffect } from "react"
 import emailjs from '@emailjs/browser'
 import Nav from "./Nav"
-import { ThemeContext } from "../ThemeConext"
+import { ThemeContext } from "../general/ThemeConext"
 
 
 function Resume() {

@@ -1,0 +1,53 @@
+const notes = {
+    snake:{
+        about:"Snake is the game that launched the idea to recreate some of my favorite computer games. It took me several attempts to master the recursion that was necessary to get the snake to 'move' on it's own.",
+        logic:"Several functions are used to generate food and snake pieces at the appropriate times, but the main function is called slither. It is responsible for getting the position of the 'head' of the snake. That position is passed to the second piece, and that piece passes it's position to the third piece, and so one and so on. If the head position is equal to the position of the food on the board, a new piece will be added to the end of the snake.", 
+        github:"https://github.com/Daniellescipio/snake",
+        liveSite:"https://daniellescipio.github.io/snake/", 
+        skills:["html", "css", "javascript", "recurrsion", "dom manipulation", "mobile development", "intervals", "timeouts", "localStorage"],
+        pride:"This is the first game where I realized how much math could go into coding. Making this 'snake' ,move meant careful calculating where the 'head' was in the board and using those handy dandy algerbra skills to figure out 'where' it would end up if it move vertically or horizontally. My 10th grade Algebra teacher would be proud!",
+        wip:["mobile development", "restart button", "dark/light themes"],
+        instructions:"Click in the black square and then use your arrow keys to start the game. 'Eat' the red dots and grow your snake. Avoid eating yourself on any level, or running into red walls on medium and hard. Good luck!"
+    },
+    wordle:{
+        about:"Not-wordle is the first game I actually got to work, and the one I have the most fun playing.It presented several challenges like, not being able to find an API that had consistently reasonable five letter words, styling and programming the onscreen keyboard, and programming divs to respond to keyBoard events.",
+        logic:"Three major functions(with lots of tiny functions) power this game; enterLoop checks a user's entered word,accepting on denying based on if it equals the word to guess, it's too short, or it's misspelled. newLetterLoop which handles keyBoard events and places the enetered letter in the correct div visually. and deleteLoop which is more or less an invertered newLetterLoop. Words to guess come from a custom file with over 500 five letter words...dictionaryAPI is used to verify spelling.", 
+        github:"https://github.com/Daniellescipio/WordGame",
+        liveSite:"https://daniellescipio.github.io/WordGame/", 
+        skills:["html", "css", "javascript", "animations", "dom manipulation", "mobile development", "gsap", "fetch", "async/await","gsap", "dictionaryAPI"],
+        pride:"This would have been 10,000 time easier to build if the UI wasn't such a big part of the game. Having auser type in an input box and checking if it's a random word. Cake. Having a user press a button and the window recognize that button, enter or remove or validate user input in the appropriate div or divs in animated and timed loops...not so easy. I also ran into trouble finding free API's that had...normal five letter words...so...I made my own word database of 'everyday' five letter words with over 700 words.",
+        wip:["mobile development", "restart button", "dark/light themes", "animation ease"],
+        instructions:"Use your keyboard or the onscreen keyboard to guess a five letter word. Yellow tiles mean that letter is in the wrong place. Green tiles mean that letter is in the right place. Grey Tiles mean that letter is not in the word. Use these clues to guess the word in six tries!"
+    },
+    sentenceBuilder:{
+        about:"I had an abnormal obsession with madlibs when I was a child, and recreating the game online was way more fun than I anticipated. Create non-sensical sentences, learn about sentence structure, and giggle with your inner-child!",
+        logic:"Most of the 'logic' is contained in the actual sentence structures(imported from a different file) to make the code as simple as possible.Each sentence structure is a function which returns the string with number place holders for the parts a user can input. This logic was inspired by pg sentence extrapolation for pgClient. It also returns an array of values objects which has a length equal to the number of place holders in the string. Each value object has a property which corresponds to an array of words, and a property that cooresponds to a placeholder. When the structure is placed on the page, the number placeholders are replaced with dropdown menus of words.", 
+        github:"https://github.com/Daniellescipio/portfolio/tree/main/src/components/games/sentenceBuilder",
+        liveSite:"https://daniellescipio.netlify.app/games/sentencebuilder", 
+        skills:["JSX", "css", "javascript", "React", "react context", "mobile development"],
+        pride:"I love when my love of writing and my love of web dev get to play together. Coming up with strings that were dynamic enough for dropdowns and user input, but strict enough to fit grammar rules was definitely a challenge, but when you sink toads in Spain you're sure to smell your aunt's hotcomb! ",
+        wip:["switching sentence structures (rigth now this causes a break in state and structure :( ).","mobile development","dark/light themes",],
+        instructions:"Choose a word for each blank in the sentence by typing in or clicking on words from our approved dropdown. After you've chosen a word from each dropdown reveal you non-sensical sentence!"
+    },
+    minesweeper :{
+        about:"After I finished Snake, there was no question that the next pre-internet game I would build would be Minesweeper. Who knew there was so much recursion in those early games!",
+        logic:"The logic in this game comes in several steps. First a blank grid board is created according to level, when the user clicks for the first time, several functions run. First, bombs are placed randomly on the board, avoiding previously placed bombs, the square the user clicked, and squares immediately surrounding where the user first clicked. Second, the code evaluates if the square the user clicked is 'touching' a square with any bombs. if it is. the number of bombs near it is placed in it's cell. If it is not, it is revealed as well as any squares that are touching that square but not touching a bomb(and any squares toching those and not touching a bomb and so on recursively until a bomb square neare a bomb is encountered). The second part continues everytime a user clicks until all the non-bomb squares are uncovered or any bomb is uncovered.", 
+        github:"https://github.com/Daniellescipio/minesweeper",
+        liveSite:"https://daniellescipio.github.io/minesweeper/", 
+        skills:["html", "css", "javascript", "recurrsion", "dom manipulation", "mobile development", "loops"],
+        pride:"A few things especially challenging for this game, first not only does this game need the same amoutn of base mathematics as snake, unlike Snake's code, every level on this game has a different number of squares on it's grid and so different algorithms are necessary to make the game functional between level changes. Second, randomly placing bombs meant first checking that bombs had not been previously placed and if they had, removing and replacing them in a new random position. Last, the recursion for this was more complicated than the recursion for snake. For snake I new exactly how many times my recursive funtion would run (the length of the snake) and what the game would look like whent he recursive function was finished. Because my bombs wer randomly placed, the recursion for this game meant I had no clue how many times it would run until it 'met' a bomb and creating the proper conditions to control this recursion properly was a real challenge.",
+        wip:["Switching between levels works great, but play the same level too many times and...something goes wrong?", "mobile development", "dark/light themes"],
+        instructions:"Click any square to start, after that pay attention! If a square is blank, that means there are no bombs near it, if a square has a number in it, that number corresponds to the number of bombs in that square. So a square with the number 2 in it has 2 bombs near it, and 4 squares near it that are safe to click. If a square has the number 6 in it, every square surrounding it has a bomb in it, don't worry this is rare! Use your skills of elimination and problem solving to sweep through these mines."
+    },
+    memoryCircles :{
+        about:"The least complex of my games, and the only one I can never tell if the code is broken (it's not, that *really was* purple). Can you make it past level 8? Challenge the computer and your memory with this color matching game.",
+        logic:"Two functions control this game, the function that controls the computer's turn, and the function that begans, validates, and ends the user's turn. These functions behave differently on the first round than cooresponding rounds. The computer starts the game, and on it's first turn, it randomly choses three of the color squares(they may repeat so blue, blue, blue is a valid sequence). These colors are added to a currentSequence array. Once the computer is finished the user function allows the user to click a square. if they click the 'right' circle, it is added to the entireSequenceArray. On cooresponding turns, the computer will use the entireSequence array adding only one color at the end and getting expotentially faster with it's selections (interval set to 1000/level). All of these colors are added to the currentArray for the user to gues. If the user guesses the color correctly it is added to the entireSequence array and the computer goes again. ", 
+        github:"https://github.com/Daniellescipio/memoryGame--colorCircles",
+        liveSite:"https://daniellescipio.github.io/memoryGame--colorCircles/", 
+        skills:["html", "css", "javascript", "intervals", "dom manipulation", "mobile development", "timeouts"],
+        pride:"This was the first game that felt easy to build, it felt like the hours spent problem solving on previous games were all paying off.",
+        wip:[],
+        instructions:"Click start and wait for the computer choose three circles. When it tells you it's your turn, try and click the same circles in the same order the computer did. Each new level will add one new color and get faster. How many levels can you go color for color with this computer's memory?"
+    }
+}
+export default notes;
