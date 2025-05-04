@@ -1,7 +1,7 @@
 import { useState, useRef, useContext, useEffect } from "react"
 import emailjs from '@emailjs/browser'
 import Nav from "./Nav"
-import { ThemeContext } from "../ThemeConext"
+import { ThemeContext } from "../general/ThemeConext"
 
 
 function Resume() {
@@ -23,6 +23,7 @@ function Resume() {
           publicKey: 'hYHh13w4RHiYMtnH7',
         })
         console.log("success")
+        setInputs({user_name:"", user_email:"", message:""})
         setSent(true)
       } catch (error) {
         console.log(error)

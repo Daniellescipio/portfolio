@@ -2,7 +2,7 @@ import {useNavigate } from "react-router-dom"
 import Nav from "./Nav"
 import Snake from "./games/Game"
 import { useContext, useEffect, useState } from "react"
-import { ThemeContext } from "../ThemeConext"
+import { ThemeContext } from "../general/ThemeConext"
 import UnoCard from "./games/uno/UnoCard"
 import circles from "./games/gameAssets/colorCircles.png"
 import mine from "./games/gameAssets/minesweeper.png"
@@ -12,7 +12,7 @@ import wordle from "./games/gameAssets/wordle.png"
 
 function Games() {
   const {setLocation, setTheme} = useContext(ThemeContext)
-  const [travel, setTravel] = useState()
+  const [travel, setTravel, setOpen] = useState()
   const navigate = useNavigate()
   useEffect(()=>{
     setLocation("game")
@@ -24,7 +24,7 @@ function Games() {
       <>
         <Nav/>
         <h1>Let's play!</h1>
-        <p className = "gameMessage">I love to have fun and there's been something special about creating all of my childhood games(and more recent). I hope you have as much fun playing as I had creating<span class="material-symbols-outlined redColor"> favorite</span><span class="material-symbols-outlined redColor"> favorite</span></p>
+        <p className = "gameMessage">I love to have fun and there's been something special about creating all of my childhood games(and more recent). I hope you have as much fun playing as I had creating<span className="material-symbols-outlined redColor"> favorite</span><span className="material-symbols-outlined redColor"> favorite</span></p>
         <div className="gameGrid" >
           <div onClick = {()=>setTravel("/games/snake")} className = "gameLink">
             <img src = {snake} alt = ""/>

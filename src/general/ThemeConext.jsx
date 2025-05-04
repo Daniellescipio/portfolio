@@ -5,8 +5,12 @@ const ThemeContext = React.createContext()
 function ThemeProvider(props){
     const [theme, setTheme] = useState("light")
     // //the homepage has an opened and closed state
-     const [open, setOpen]=useState(false)
+     const [open, setOpen]=useState(localStorage.getItem("open")||false)
      const [location, setLocation]=useState(false)
+     console.log("Are we open? ", open)
+     useEffect(()=>{
+        open ? localStorage.setItem("open", true) : localStorage.setItem("open",false)
+     },[open])
     // //allows me to switch pages with a function instead of a link, allowing me to do other stuff before sending the user away
     // const [istheUserTraveling, setTravel] = useState(false)
     // //cleaning up localstorage function

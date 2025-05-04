@@ -1,0 +1,8 @@
+
+user objects will have username, password, profile shape and color, points, and prizes
+I'm thinking noSQL mongoDB
+there were be a vending a machine game where users can purchase prizes. My idea is every so often, the vending machine will repopulate with random items. Super random. 
+Like apples or your mom's love and Elvis's guitar, idk.
+Prize objects will have a price and a name.
+Users can only use the vending machine/get prizes if they have accounts. 
+users can login and chose a profile shape and color

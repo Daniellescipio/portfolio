@@ -3,65 +3,65 @@
 
 import { useEffect, useState, useContext } from "react";
 import UnoCard from "./UnoCard";
-import { ThemeContext } from "../../../ThemeConext";
+import { ThemeContext } from "../../../general/ThemeConext";
+import { CardContext } from "./CardContext";
 import Nav from "../../Nav";
+import Settings from "./UnoSettings";
+import { PlayerContext } from "./PlayerContext";
 
-//8 wild cards 4: wild 4: draw4
+//this component creates the deck, each individual card is created in a seperate component
 export default function Uno(){
+    const {players} = useContext(PlayerContext)
+    const [settingsText, setSettingsText]=useState("")
+    const [gameRules, setGameRules] = useState(
+        {
+            cardNum:7,
+            stacksies:null, 
+            drawUntil:null, 
+            powerPlay:null
+        })
+    const [ready,setReady]=useState(false)
     const {theme, setLocation} = useContext(ThemeContext)
-    const [deck, setDeck] = useState(false)
+    const {unoDeck, shuffleDeck, setDeck, dealCards} = useContext(CardContext)
+    //controls which card(s) is(are) visible, passed to and set by the child component that displays cards.
     const [display, setDisplay] = useState(false)
-    const [shuffled, setShuffled] = useState(false)
-    const [playingCards, setPlayingCards] = useState([])
+        console.log(players)
     useEffect(()=>{
+        if(ready){
+            setSettingsText("Change Rules")
+           dealCards(gameRules.cardNum)
+        }else{
+            setSettingsText("Set Rules to Play")
+        }
         setLocation("game")
-       const createDeck = ()=>{
-            const rawDeck = {
-                red:[],
-                blue:[],
-                green:[],
-                yellow:[]
-            }
-            for(const key in rawDeck){
-                rawDeck[key].push(0,1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,"+2","+2","block","block","repeat","repeat")
-            }
-            rawDeck.wild = ["+4","+4","+4","+4","WILD","WILD","WILD","WILD"]
-            return rawDeck
-        }
-        setDeck(createDeck())
-    },[])
-    const shuffleDeck = ()=>{
-        if(!shuffled){
-            let cardCount =0
-            for(let i = 0;i<4;i++){
-                while(cardCount<108){//<--108 cards
-                    const colors = Object.keys(deck)
-                    const randomColor = colors[Math.floor(Math.random()*colors.length)]
-                    const randomsubDeck = [...deck[randomColor]]
-                    const randomVal = randomsubDeck.splice(Math.floor(Math.random()*randomsubDeck.length),1)
-                   setPlayingCards((prevCards)=>[...prevCards, {val:randomVal[0], color:randomColor}])
-                   cardCount++
-                }
-            }
-            setShuffled(true)
-        }
-    }
-    deck && shuffleDeck()
+        shuffleDeck(unoDeck)
+    },[gameRules,ready])
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "September", "December"]
     const date = new Date()
-
     return(
         <>
             <Nav/>
-            <h1>Soon To Be Uno!!</h1>
-            <p>Uno game is still being built, but feel free to flip through the -still under development- deck and come back later to see how it improves! Welcome to the process!</p>
-            <p>Last updated : {`${months[date.getMonth()]} / ${date.getDate()} / ${date.getFullYear()}`}</p>
-            <p>Card Count:{playingCards.length}</p>
-            <div className = "devGrid">
-                {playingCards &&
-                playingCards.map((card, i)=><UnoCard key = {i}setDisplay = {setDisplay} display = {display} num = {card.val} color = {card.color} id={i}/>)}
+            <Settings gameRules={gameRules} setGameRules={setGameRules} ready={ready} setReady={setReady}/>
+                {unoDeck &&
+                <div className="deck">
+                    {unoDeck.map((card)=><UnoCard key = {card.id} setDisplay = {setDisplay} display = {display} card={card}/>)}
+                    <div className="discard">
+                    </div>
+                </div>
+                }
+            <p onClick={()=>setReady(false)}>{settingsText}</p>
+            <div className="playerBox">
+                {players.map((player, i)=>
+                    <div className={player.player.status?`player${player.player.name.split(" ")[1]}`:"hidden"} key = {i}>
+                        <h1>{player.player.name}</h1>
+                        <div className="playerCards">
+                            {player.player.cards.map((card, i)=>
+                                <UnoCard key = {i} setDisplay = {setDisplay} display = {display} card={card}/>  
+                            )}
+                        </div>
+                    </div>
+                )}
             </div>
-            {/* <UnoCard key={"00"} setDisplay = {setDisplay} display = {display} num = {"WILD"} color = {"wild"} id={999}/> */}
 
         </>
     )

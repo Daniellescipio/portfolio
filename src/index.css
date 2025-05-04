@@ -8,6 +8,40 @@ li{
 ul{
   padding:0;
 }
+.noSupport{
+  position: absolute;
+  top: 2em;
+  left: 1em;
+
+}
+.noSupportText{
+  position: absolute;
+  top: 4em;
+  width: 77px;
+  text-align: center;
+  background: grey;
+  opacity: .7;
+  border-radius: 10px;
+  padding: 1em;
+}
+.cover{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-color: #faebd7b8;
+  z-index: 99;
+}
+.hidden{
+  display: none;
+}
+
+/* mobile general */
+@media screen and (max-width: 992px) {
+  .noSupportText{
+    top: 1em;
+    opacity: .9;
+  }
+}
 /*Theme stuff*/
 .dark{
   background-color: black;
@@ -104,6 +138,12 @@ input:checked + .slider:before {
   position: absolute;
   width: 100vw;
 }
+#homePage>h1{
+  margin:0 ;
+}
+#homePage>ul{
+  margin-top:0;
+}
 #homePage>ul>li{
   width: fit-content;
   margin: auto;
@@ -132,6 +172,21 @@ input:checked + .slider:before {
   margin: 0;
   top: 25%;
 }
+.about{
+  font-size: 40%;
+  width: 500px;
+  margin: auto;
+  height: 0;
+  overflow: hidden;
+}
+.about>p{
+  margin:0
+}
+.about>p>a{
+  margin: 10px;
+  text-decoration: none;
+  color: inherit;
+}
 /*nav bar*/
 .navBar > a{
   text-decoration: none;
@@ -141,6 +196,7 @@ input:checked + .slider:before {
   border-right: 1px solid;
   margin:10px
 }
+
 /*resumePage*/
 .resumePage{
   display: flex;
@@ -167,6 +223,9 @@ input[type="submit"], .sentMssg>button{
   background: none;
   color: inherit;
   cursor: pointer;
+  box-shadow: 3px 3px 5px black;
+  width: fit-content;
+  margin: auto;
 }
 
 #contactForm>label>input{
@@ -174,6 +233,19 @@ input[type="submit"], .sentMssg>button{
 }
 .sentMssg{
   text-align: center;
+}
+/* mobile resumePage */
+@media screen and (max-width: 992px) {
+  .resumePage{
+    display: block
+  }
+  #resume{
+    width: 100vw;
+  }
+  #resume>iframe, #contactForm {
+    width:90%;
+    border:none;
+  }
 }
 
 /*hover animations*/

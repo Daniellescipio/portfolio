@@ -4,14 +4,18 @@ import { useGSAP } from "@gsap/react";
 import { useContext } from "react"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { ThemeContext } from "../ThemeConext"
+import { ThemeContext } from "../general/ThemeConext"
+import { breakCamelCase } from "../general/functions";
 function Home() {
     const [travel, setTravel] = useState()
     const {theme, setTheme, open, setOpen, setLocation} = useContext(ThemeContext)
     const [hover, setHover] = useState(false)
+    const [showHideAbout, setShowHideAbout] = useState(true)
     const container = useRef()
+    const about = useRef()
     const navigate = useNavigate()
-    const {contextSafe} = useGSAP()
+    const {contextSafe} = useGSAP({scope:about})
+
     useEffect(()=>{
       setLocation("")
        navigate(travel)
@@ -55,19 +59,50 @@ function Home() {
     }, {dependencies:[hover], scope:container, revertOnUpdate:true})
 
     const handleOpenAndClose = contextSafe((dir)=>{
-      console.log(open, hover)
       if(hover ==="exiting"){
         setOpen(false)
+        localStorage.setItem("open", false)
         //call setHover again to trigger animation now that the app is closed
         setHover("exit")
       }else{
         setHover("open")
+        localStorage.setItem("open", true)
       }
 
     })
-    const contents = ["Resume","Games"]//,"buildAChar","Animations", "Writing"<--coming soon
-    const tableOContents= contents.map((content, index)=><li key ={index} onClick={()=>beforeYouGo(content)}>{content}</li>)
-    tableOContents.push(<li key = "exit" onClick = {handleOpenAndClose} onMouseEnter={()=>setHover("exiting")}>Exit</li>)
+    const openAbout = contextSafe(()=>{
+      if(showHideAbout){
+        gsap.to(".about", {height:230, duration:1})
+        gsap.fromTo(".aboutClick",{ opacity: 0}, { opacity: 1, duration: 2 })
+        setShowHideAbout(false)
+      }else{
+        gsap.to(".about", {height:0, duration:1})
+        gsap.fromTo(".aboutClick",{ opacity: 0}, { opacity: 1, duration: 2 })
+        setShowHideAbout(true)
+      }
+
+    })
+
+    const contents = ["Resume","Games", "JavascriptBlog"]//,"buildAChar","Animations", "Writing"<--coming soon
+    const tableOContents= contents.map((content, index)=><li key ={index} onClick={()=>beforeYouGo(content)}>{breakCamelCase(content)}</li>)
+    tableOContents.push(
+      <div ref={about} key = "showAbout">
+        <li  className = "aboutClick" onClick={openAbout} >{showHideAbout ? "About This Site" : "Hide About"}</li> 
+        <div className = {`about ${theme === "dark" ? "light":"dark"}`}>
+          <p>Welcome to my portfolio!</p><p> Learn the most about how I code by playing games!</p> 
+          <p>Learn more about my views on Javascript from the JS Blog</p> 
+          <p>Or contact me on the resume page.</p> 
+          <p> This site is ever evolving and soon to come will be interactive animations, a character generator and an improved version of 
+          <a target = "blank" href="https://github.com/Daniellescipio/theWritersGuideBook/tree/main">
+          The writer's guidebook!
+          </a>
+          </p>
+        </div>
+      </div>, 
+      <li key = "exit" onClick = {handleOpenAndClose} onTouchStart={()=>setHover("exiting")} onTouchEnd={handleOpenAndClose} onMouseEnter={()=>setHover("exiting")}>
+        Exit
+      </li>
+      )
     return (
       <>    
       <div ref={container} id = "cover" className={theme}>
