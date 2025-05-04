@@ -160,11 +160,16 @@ button.roundWhim{
 .display{
     z-index: 999 !important;
 }
-.deck> .container{
+.deck{
     position: absolute;
-    left: 40%;
+    left: 45%;
+    top: 35%;
+}
+.deck> .container{
+    /* position: absolute;
+    left: 40%; */
     transition: all 1s ease;
-    top: 23em
+    /* top: 23em */
 }
 .card>img{
     width: 100px;
@@ -237,28 +242,33 @@ button.roundWhim{
 }
 .playerOne{
     position: relative;
+    top: 70%;
 }
 .playerTwo{
     position: relative;
-    top: 35%;
+    top: 10%;
 }
 .playerThree{
     position: relative;
-    bottom: 43%;
-    right: 27%;
+    top: 15%;
+    right: 25%;
     transform: rotate(90deg);
 }
 .playerFour{
     position: relative;
-    bottom: 83%;
-    left: 27%;
+    /* bottom: 83%; */
+    left: 25%;
     transform: rotate(270deg);;
+}
+/*Wordle needs to be lower, but just wordle so...*/
+#wordle, #minesweeper{
+    bottom: 0;
 }
 /* mobile game stuff */
 @media screen and (max-width: 992px) {
-    .playerBox >div{
+    /* .playerBox >div{
         font-size: 50%;
-    }
+    } */
     .gameMessage{
         width: inherit;
     }

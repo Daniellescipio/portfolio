@@ -5,7 +5,7 @@ import { useContext, useEffect, useState, useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 
-function Game({src, notReady, note}) {
+function Game({name, src, notReady, note}) {
   const [infoTab, setInfotab] = useState("about")
   const [info, setInfo] = useState(false)
   const {setLocation, setTheme} = useContext(ThemeContext)
@@ -21,11 +21,12 @@ function Game({src, notReady, note}) {
   window.addEventListener("click", (e)=>{
     console.log("lll")
 })
+  const gameClass = name.split(" ").join("").toLowerCase() 
     return (
       <>
         <Nav/>
         <div className='gamesContainer'>
-          {notReady && <p className="gameMessage">This game is currently under construction(either the mobile version need works or it's buggy!), but feel free to play around anyway and come back later for updates!</p>}
+          {notReady && <p className="gameMessage">This game is currently under construction(either the mobile version needs work or it's buggy!), but feel free to play around anyway and come back later for updates!</p>}
           <p className = "more" onClick={()=>setInfo((prevInfo)=>!prevInfo)}>{!info ? "More About This Project...":"Less About This Project"}</p>
           <div className={`cover ${info ? "": "hidden"}`}>
             <div ref={container} className = "moreInfo">
@@ -42,7 +43,7 @@ function Game({src, notReady, note}) {
               </div>
             </div>
           </div>
-            <iframe className="gameFrame"  src={src}  width={width} height={"850px"}/>
+            <iframe className="gameFrame" id ={gameClass} src={src}  width={width} height={"850px"}/>
         </div>
       </>
     )

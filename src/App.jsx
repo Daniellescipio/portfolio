@@ -61,10 +61,10 @@ function App() {
         <Route path = "/javascriptblog" element={<Writing/>}></Route>
         <Route path = "/animations" element={<Animations/>}></Route>  
         {/* game routes */}
-        <Route path = "/games/wordleish" element={<Game src="https://daniellescipio.github.io/WordGame/"  note = {notes.wordle} notReady={true}/>}></Route>
-        <Route path = "/games/snake" element={<Game src="https://daniellescipio.github.io/snake/" note = {notes.snake} notReady={false}/>}></Route>
-        <Route path= "/games/memorycircles" element={<Game src="https://daniellescipio.github.io/memoryGame--colorCircles/" note = {notes.memoryCircles} notReady={true}/>}/>
-        <Route path = "/games/minesweeper" element={<Game src="https://daniellescipio.github.io/minesweeper/" note = {notes.minesweeper} notReady={false}/>}></Route>
+        <Route path = "/games/wordleish" element={<Game name = 'Wordle' src="https://daniellescipio.github.io/WordGame/"  note = {notes.wordle} notReady={true}/>}></Route>
+        <Route path = "/games/snake" element={<Game name = 'Snake' src="https://daniellescipio.github.io/snake/" note = {notes.snake} notReady={false}/>}></Route>
+        <Route path= "/games/memorycircles" element={<Game name = 'Memorey Circles' src="https://daniellescipio.github.io/memoryGame--colorCircles/" note = {notes.memoryCircles} notReady={true}/>}/>
+        <Route path = "/games/minesweeper" element={<Game name = 'Minesweeper' src="https://daniellescipio.github.io/minesweeper/" note = {notes.minesweeper} notReady={false}/>}></Route>
         <Route path = "/games/sentencebuilder" element={<SentenceBuilder note = {notes.sentenceBuilder} />}></Route>
           <Route path = "/games/uno" element={<Uno note = {notes.sentenceBuilder}/>}></Route>
       </Routes>    

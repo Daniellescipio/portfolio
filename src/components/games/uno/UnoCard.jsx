@@ -1,11 +1,9 @@
 import {useState } from "react"
 import back from "../gameAssets/back.png"
 function UnoCard({setDisplay, display, card}) {
-  const colorArray= ["redColor", "blueColor", "yellowColor", "greenColor"]
   const [hover, setHover] = useState("")
   //if it is a skip or reverse card we use google icon class.
-  console.log("here", card)
-
+//console.log(card)
   return (
     <>
       <div className={hover+" container"} id = {card.id}>

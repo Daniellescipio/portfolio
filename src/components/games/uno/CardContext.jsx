@@ -1,12 +1,13 @@
 import React, {useState} from "react"
-import { useEffect } from "react"
+import { useEffect, useContext } from "react"
 import deck from "./unoCards"
+import { PlayerContext } from "./PlayerContext"
 const CardContext = React.createContext("")
 
 function CardProvider(props){
     const [unoDeck, setDeck] = useState(deck)
     const [shuffled, setShuffled] = useState(false)
-
+    const {players} = useContext(PlayerContext)
         const shuffleDeck = (cards)=>{
             const shuffledDeck = [] 
             //copy a deck so we can splice without issues
@@ -19,9 +20,19 @@ function CardProvider(props){
             setDeck(shuffledDeck)
             setShuffled(true)
         }
+    const dealCards = (cardNum)=>{
+        const sudoDeck = [...unoDeck]//to avi=oid issues with state
+        for(let i=0;i<players.length;i++){
+            if(players[i].player.status){
+                const playerCards = sudoDeck.splice(0,cardNum)
+                players[i].setPlayer((prevPlayer)=>{return{...prevPlayer, cards:playerCards}})
+            }
+        }
+        setDeck(sudoDeck)
+    }
 
     return(
-        <CardContext.Provider value={{unoDeck,setDeck, shuffled, shuffleDeck}}>
+        <CardContext.Provider value={{unoDeck,setDeck, shuffled, shuffleDeck, dealCards}}>
             {props.children}
         </CardContext.Provider>
     )
