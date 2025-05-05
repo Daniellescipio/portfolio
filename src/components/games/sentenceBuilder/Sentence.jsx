@@ -4,7 +4,6 @@ import Nav from "../../Nav.jsx"
 import { useContext, useEffect, useState } from "react";
 import '../games.css'
 import { ThemeContext } from "../../../general/ThemeConext.jsx";
-import axios from "axios";
 import { breakCamelCase } from "../../../general/functions.js";
 export default function Sentence(){
     //different structure options

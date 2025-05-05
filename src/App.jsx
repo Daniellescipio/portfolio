@@ -6,6 +6,7 @@ import {Routes, Route} from 'react-router-dom'
 import Resume from "./components/Resume"
 import BuildAChar from "./components/BuildAChar"
 import Writing from "./components/Writing"
+import Journey from "./components/about/MyJourney"
 import Games from "./components/Games"
 import Animations from "./components/Animations"
 import Game from "./components/games/Game"
@@ -13,6 +14,7 @@ import SentenceBuilder from "./components/games/sentenceBuilder/SentenceBuilder"
 import Uno from "./components/games/uno/Uno"
 import notes from './general/notes'
 import Blog from "./components/Blog"
+import SecurityProjects from "./components/cybersecurity/SecurityProject"
 
 
 function App() {
@@ -59,7 +61,9 @@ function App() {
         <Route path = "/games" element={<Games/>}></Route>
         <Route path = "/buildAChar" element={<BuildAChar/>}></Route>
         <Route path = "/javascriptblog" element={<Writing/>}></Route>
-        <Route path = "/animations" element={<Animations/>}></Route>  
+        <Route path = "/animations" element={<Animations/>}></Route> 
+        <Route path = "/myJourney" element={<Journey/>}></Route>  
+        <Route path = "/cybersecurity" element={<SecurityProjects/>}></Route>  
         {/* game routes */}
         <Route path = "/games/wordleish" element={<Game name = 'Wordle' src="https://daniellescipio.github.io/WordGame/"  note = {notes.wordle} notReady={true}/>}></Route>
         <Route path = "/games/snake" element={<Game name = 'Snake' src="https://daniellescipio.github.io/snake/" note = {notes.snake} notReady={false}/>}></Route>

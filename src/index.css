@@ -204,6 +204,11 @@ input:checked + .slider:before {
 #resume{
   width:65vw
 }
+#resume>img{
+  width: 60vw;
+  height: 85vh;
+  max-width: 700px;
+}
 
 #contactForm{
   text-align: left;
@@ -218,6 +223,10 @@ input:checked + .slider:before {
   width: 99%;
   height: 75%;
 }
+#contactForm>.buttonRow{
+  display: flex;
+  margin-top: 15px;
+}
 input[type="submit"], .sentMssg>button{
   border: none;
   background: none;
@@ -226,6 +235,7 @@ input[type="submit"], .sentMssg>button{
   box-shadow: 3px 3px 5px black;
   width: fit-content;
   margin: auto;
+  padding: 10px;
 }
 
 #contactForm>label>input{
@@ -233,6 +243,13 @@ input[type="submit"], .sentMssg>button{
 }
 .sentMssg{
   text-align: center;
+}
+.buttonRow>a{
+  text-decoration: none;
+  color: inherit;
+  padding: 10px;
+  box-shadow: 3px 3px 5px black;
+  margin: auto;
 }
 /* mobile resumePage */
 @media screen and (max-width: 992px) {
@@ -245,6 +262,10 @@ input[type="submit"], .sentMssg>button{
   #resume>iframe, #contactForm {
     width:90%;
     border:none;
+  }
+  .contactDiv{
+    width: 75%;
+    margin: auto;
   }
 }
 
