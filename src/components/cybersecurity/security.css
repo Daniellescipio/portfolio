@@ -1,0 +1,24 @@
+.projectContainer{
+    display: flex;
+    margin: auto;
+    gap: 5em;
+    justify-content: center;
+    align-items: center;
+}
+.projectContainer>p{
+    width: 33%;
+}
+.projectContainer>ul>li{
+   list-style: disc;
+}
+
+/* mobile resumePage */
+@media screen and (max-width: 1230px) {
+    .projectContainer{
+        flex-direction: column;
+    }
+  }
+.projectDropDown{
+    height: 65px;
+    overflow: hidden;
+}

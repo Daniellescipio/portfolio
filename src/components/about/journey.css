@@ -1,0 +1,71 @@
+.timeLine{
+    width: fit-content;
+    margin: auto;
+    text-align: left;
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    left: 20vw;
+    z-index: 1;
+    border-left: 10px solid;
+    font-family: "Cascadia Mono", sans-serif;
+}
+
+.timeLine>div{
+    height: 100%;
+    padding-top: 2em;
+}
+.hover-container{
+    height: 11.1%;
+}
+.journeyCircle{
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    position: relative;
+    right: 14px;
+    gap: 5em;
+    font-weight: 900;
+}
+.journeyCircle>div{
+    z-index: 2;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid;
+    background-color: black;
+}
+.journeyCircle>p{
+    margin: 0;
+    cursor: pointer;
+}
+
+.infoCover{
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background-color: #ffffffd4;
+    z-index: 5;
+    font-family: "Cascadia Mono", sans-serif;
+}
+.infoPopUp{
+    width: 35vw;
+    margin: 5em auto;
+    border: 5px solid;
+    border-radius: 15px;
+    padding: 10px;
+}
+.infoPopUp>img{
+    width: 80%;
+    height: 50%;
+}
+.infoPrompt{
+    font-family: "Cascadia Mono", sans-serif;
+    width: fit-content;
+    float: right;
+}
+.exit{
+    width: fit-content;
+}

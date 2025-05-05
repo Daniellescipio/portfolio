@@ -2,6 +2,7 @@ import { useState, useRef, useContext, useEffect } from "react"
 import emailjs from '@emailjs/browser'
 import Nav from "./Nav"
 import { ThemeContext } from "../general/ThemeConext"
+import resumeImage from "../assets/resume.png"
 
 
 function Resume() {
@@ -37,9 +38,9 @@ function Resume() {
         <div className = "resumePage">
           <div id = "resume">
             <h2>Resume</h2>
-            <iframe src="https://docs.google.com/document/d/e/2PACX-1vT-Y99ecKLp9srRUYcyMaYJo8vHVIlegPk9zg2P-d89oaLF0cwN3YgrvKRUYDjQ9uLOly7x9n__hz1S/pub?embedded=true"  width={"75%"} height={"750px"}></iframe>
+              <img src={resumeImage}/>
           </div>
-          <div>
+          <div className="contactDiv">
             <h2>Contact Form</h2>
             <form ref= {form} onSubmit={(e)=>sendEmail(e)} id="contactForm">
               {!sent ? 
@@ -72,7 +73,10 @@ function Resume() {
                     value = {inputs.message}
                     onChange={handleChange}
                   />
-                  <input type = "submit" value="Contact Me"/>
+                  <div className="buttonRow">
+                    <input type = "submit" value="Contact Me"/>
+                    <a href="../assets/DanielleWilliamsResume.pdf" download>Resume Download</a>
+                  </div>
                 </>
                 :
                 <div className="sentMssg">
@@ -81,8 +85,6 @@ function Resume() {
                 </div>
               }
             </form>
-    
-
           </div>
         </div>
       </>

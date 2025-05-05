@@ -10,7 +10,7 @@ function Home() {
     const [travel, setTravel] = useState()
     const {theme, setTheme, open, setOpen, setLocation} = useContext(ThemeContext)
     const [hover, setHover] = useState(false)
-    const [showHideAbout, setShowHideAbout] = useState(true)
+    //const [showHideAbout, setShowHideAbout] = useState(true)
     const container = useRef()
     const about = useRef()
     const navigate = useNavigate()
@@ -70,35 +70,36 @@ function Home() {
       }
 
     })
-    const openAbout = contextSafe(()=>{
-      if(showHideAbout){
-        gsap.to(".about", {height:230, duration:1})
-        gsap.fromTo(".aboutClick",{ opacity: 0}, { opacity: 1, duration: 2 })
-        setShowHideAbout(false)
-      }else{
-        gsap.to(".about", {height:0, duration:1})
-        gsap.fromTo(".aboutClick",{ opacity: 0}, { opacity: 1, duration: 2 })
-        setShowHideAbout(true)
-      }
+    // const openAbout = contextSafe(()=>{
+    //   if(showHideAbout){
+    //     gsap.to(".about", {height:300, duration:1})
+    //     gsap.fromTo(".aboutClick",{ opacity: 0}, { opacity: 1, duration: 2 })
+    //     setShowHideAbout(false)
+    //   }else{
+    //     gsap.to(".about", {height:0, duration:1})
+    //     gsap.fromTo(".aboutClick",{ opacity: 0}, { opacity: 1, duration: 2 })
+    //     setShowHideAbout(true)
+    //   }
 
-    })
+    // })
 
-    const contents = ["Resume","Games", "JavascriptBlog"]//,"buildAChar","Animations", "Writing"<--coming soon
+    const contents = ["Resume","Games", "MyJourney", "Cybersecurity"]//,"buildAChar","Animations", "Writing"<--coming soon
     const tableOContents= contents.map((content, index)=><li key ={index} onClick={()=>beforeYouGo(content)}>{breakCamelCase(content)}</li>)
     tableOContents.push(
-      <div ref={about} key = "showAbout">
-        <li  className = "aboutClick" onClick={openAbout} >{showHideAbout ? "About This Site" : "Hide About"}</li> 
-        <div className = {`about ${theme === "dark" ? "light":"dark"}`}>
-          <p>Welcome to my portfolio!</p><p> Learn the most about how I code by playing games!</p> 
-          <p>Learn more about my views on Javascript from the JS Blog</p> 
-          <p>Or contact me on the resume page.</p> 
-          <p> This site is ever evolving and soon to come will be interactive animations, a character generator and an improved version of 
-          <a target = "blank" href="https://github.com/Daniellescipio/theWritersGuideBook/tree/main">
-          The writer's guidebook!
-          </a>
-          </p>
-        </div>
-      </div>, 
+      // <div ref={about} key = "showAbout">
+      //   <li  className = "aboutClick" onClick={openAbout} >{showHideAbout ? "About This Site" : "Hide About"}</li> 
+      //   <div className = {`about ${theme === "dark" ? "light":"dark"}`}>
+      //     <p>Welcome to my portfolio!</p><p> Learn the most about how I code by playing games!</p> 
+      //     <p>Learn more about me and what led me here by clicking My Journey</p> 
+      //     <p>Contact me and see my work history on the Resume page</p> 
+      //     <p>View my my Security Plans, Policies, and other Cyber security plans under CyberSecurity</p>
+      //     <p> This site is ever evolving and soon to come will be interactive animations, a character generator and an improved version of 
+      //     <a target = "blank" href="https://github.com/Daniellescipio/theWritersGuideBook/tree/main">
+      //     The writer's guidebook!
+      //     </a>
+      //     </p>
+      //   </div>
+      // </div>, 
       <li key = "exit" onClick = {handleOpenAndClose} onTouchStart={()=>setHover("exiting")} onTouchEnd={handleOpenAndClose} onMouseEnter={()=>setHover("exiting")}>
         Exit
       </li>

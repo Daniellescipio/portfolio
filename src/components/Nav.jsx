@@ -11,6 +11,9 @@ function Nav() {
        -
        <Link to="/games">Games</Link>  
        -
+       <Link to="/myJourney">About Me</Link> 
+       -
+       <Link to="/cybersecurity">Security Projects</Link>
        {/* <Link to="/">APIs</Link>  
        <Link to="/buildAChar">Build-A-Char</Link>  
        -
